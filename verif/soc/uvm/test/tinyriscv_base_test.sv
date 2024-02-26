@@ -4,10 +4,7 @@ class tinyriscv_base_test extends uvm_test;
     tinyriscv_env env;
 
     `uvm_component_utils(tinyriscv_base_test)
-
-    function new(string name="tinyriscv_base_test", uvm_component parent);
-        super.new(name, parent);
-    endfunction: new
+    `uvm_component_new
 
     function void build_phase(uvm_phase phase);
         super.build_phase(phase);
@@ -24,11 +21,11 @@ class tinyriscv_base_test extends uvm_test;
 
     function void start_of_simulation_phase(uvm_phase phase);
         string cmd;
-        cmd = "python3 $REPO_BASE/tools/BinToMem_CLI.py $REPO_BASE/tests/isa/generated/rv32ui-p-sw.bin inst.data";
+        cmd = "python3 $REPO_BASE/tools/BinToMem_CLI.py $REPO_BASE/tests/isa/generated/rv32ui-p-add.bin inst.data";
         if($system(cmd))
-            `uvm_fatal(get_full_name(), "Generate inst.data failed")
+            `uvm_fatal(`gfn, "Generate inst.data failed")
         else
-            `uvm_info(get_full_name(), "Generate inst.data successed", UVM_LOW)
+            `uvm_info(`gfn, "Generate inst.data successed", UVM_LOW)
     endfunction: start_of_simulation_phase
 
     task run_phase(uvm_phase phase);

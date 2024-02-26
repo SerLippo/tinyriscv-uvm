@@ -5,10 +5,7 @@ class tinyriscv_base_virtual_sequence extends uvm_sequence;
 
     `uvm_declare_p_sequencer(tinyriscv_virtual_sequencer)
     `uvm_object_utils(tinyriscv_base_virtual_sequence)
-
-    function new(string name="tinyriscv_base_virtual_sequence");
-        super.new(name);
-    endfunction: new
+    `uvm_object_new
 
     virtual task body();
         cfg = p_sequencer.cfg;
@@ -29,26 +26,26 @@ class tinyriscv_base_virtual_sequence extends uvm_sequence;
         uvm_hdl_read("tinyriscv_top.x26", x26);
         uvm_hdl_read("tinyriscv_top.x27", x27);
         if (x27 == 32'b1) begin
-            `uvm_info(get_full_name(), "~~~~~~~~~~~~~~~~~~~ TEST_PASS ~~~~~~~~~~~~~~~~~~~", UVM_NONE);
-            `uvm_info(get_full_name(), "~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~", UVM_NONE);
-            `uvm_info(get_full_name(), "~~~~~~~~~ #####     ##     ####    #### ~~~~~~~~~", UVM_NONE);
-            `uvm_info(get_full_name(), "~~~~~~~~~ #    #   #  #   #       #     ~~~~~~~~~", UVM_NONE);
-            `uvm_info(get_full_name(), "~~~~~~~~~ #    #  #    #   ####    #### ~~~~~~~~~", UVM_NONE);
-            `uvm_info(get_full_name(), "~~~~~~~~~ #####   ######       #       #~~~~~~~~~", UVM_NONE);
-            `uvm_info(get_full_name(), "~~~~~~~~~ #       #    #  #    #  #    #~~~~~~~~~", UVM_NONE);
-            `uvm_info(get_full_name(), "~~~~~~~~~ #       #    #   ####    #### ~~~~~~~~~", UVM_NONE);
-            `uvm_info(get_full_name(), "~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~", UVM_NONE);
+            `uvm_info(`gfn, "~~~~~~~~~~~~~~~~~~~ TEST_PASS ~~~~~~~~~~~~~~~~~~~", UVM_NONE);
+            `uvm_info(`gfn, "~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~", UVM_NONE);
+            `uvm_info(`gfn, "~~~~~~~~~ #####     ##     ####    #### ~~~~~~~~~", UVM_NONE);
+            `uvm_info(`gfn, "~~~~~~~~~ #    #   #  #   #       #     ~~~~~~~~~", UVM_NONE);
+            `uvm_info(`gfn, "~~~~~~~~~ #    #  #    #   ####    #### ~~~~~~~~~", UVM_NONE);
+            `uvm_info(`gfn, "~~~~~~~~~ #####   ######       #       #~~~~~~~~~", UVM_NONE);
+            `uvm_info(`gfn, "~~~~~~~~~ #       #    #  #    #  #    #~~~~~~~~~", UVM_NONE);
+            `uvm_info(`gfn, "~~~~~~~~~ #       #    #   ####    #### ~~~~~~~~~", UVM_NONE);
+            `uvm_info(`gfn, "~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~", UVM_NONE);
         end else begin
-            `uvm_info(get_full_name(), "~~~~~~~~~~~~~~~~~~~ TEST_FAIL ~~~~~~~~~~~~~~~~~~~~", UVM_NONE);
-            `uvm_info(get_full_name(), "~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~", UVM_NONE);
-            `uvm_info(get_full_name(), "~~~~~~~~~~######    ##       #    #     ~~~~~~~~~~", UVM_NONE);
-            `uvm_info(get_full_name(), "~~~~~~~~~~#        #  #      #    #     ~~~~~~~~~~", UVM_NONE);
-            `uvm_info(get_full_name(), "~~~~~~~~~~#####   #    #     #    #     ~~~~~~~~~~", UVM_NONE);
-            `uvm_info(get_full_name(), "~~~~~~~~~~#       ######     #    #     ~~~~~~~~~~", UVM_NONE);
-            `uvm_info(get_full_name(), "~~~~~~~~~~#       #    #     #    #     ~~~~~~~~~~", UVM_NONE);
-            `uvm_info(get_full_name(), "~~~~~~~~~~#       #    #     #    ######~~~~~~~~~~", UVM_NONE);
-            `uvm_info(get_full_name(), "~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~", UVM_NONE);
-            `uvm_info(get_full_name(), $sformatf("fail testnum = %2d", x3), UVM_NONE);
+            `uvm_info(`gfn, "~~~~~~~~~~~~~~~~~~~ TEST_FAIL ~~~~~~~~~~~~~~~~~~~~", UVM_NONE);
+            `uvm_info(`gfn, "~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~", UVM_NONE);
+            `uvm_info(`gfn, "~~~~~~~~~~######    ##       #    #     ~~~~~~~~~~", UVM_NONE);
+            `uvm_info(`gfn, "~~~~~~~~~~#        #  #      #    #     ~~~~~~~~~~", UVM_NONE);
+            `uvm_info(`gfn, "~~~~~~~~~~#####   #    #     #    #     ~~~~~~~~~~", UVM_NONE);
+            `uvm_info(`gfn, "~~~~~~~~~~#       ######     #    #     ~~~~~~~~~~", UVM_NONE);
+            `uvm_info(`gfn, "~~~~~~~~~~#       #    #     #    #     ~~~~~~~~~~", UVM_NONE);
+            `uvm_info(`gfn, "~~~~~~~~~~#       #    #     #    ######~~~~~~~~~~", UVM_NONE);
+            `uvm_info(`gfn, "~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~", UVM_NONE);
+            `uvm_error(`gfn, $sformatf("fail testnum = %2d", x3));
         end
     endtask: waiting_end_signal
 

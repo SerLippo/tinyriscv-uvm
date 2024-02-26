@@ -3,6 +3,9 @@ package tinyriscv_pkg;
     import uvm_pkg::*;
     `include "uvm_macros.svh"
 
+    `include "uvm/define/dv_define.sv"
+
+    `include "uvm/define/tinyriscv_define.sv"
     `include "uvm/cfg/tinyriscv_config.sv"
 
     `include "uvm/agt/tinyriscv_ram_monitor.sv"
