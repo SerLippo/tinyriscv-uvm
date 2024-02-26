@@ -2,3 +2,5 @@
 *.o
 *.ko
 *.obj
+riscv64-unknown-elf-gcc*
+out

@@ -1,0 +1,7 @@
+- vcs: vcs_command
+  flist: >
+    -f $REPO_BASE/verif/soc/yaml/tinyriscv.f
+    $REPO_BASE/verif/soc/top/tinyriscv_top.sv
+  top: tinyriscv_top
+
+- test: tinyriscv_base_test
