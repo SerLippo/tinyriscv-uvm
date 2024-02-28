@@ -33,3 +33,4 @@ $REPO_BASE/rtl/utils/gen_dff.v
 
 $VERIF_BASE/soc/uvm/tinyriscv_pkg.sv
 $VERIF_BASE/soc/intf/rib_if.sv
+$VERIF_BASE/soc/intf/soc_probe_if.sv

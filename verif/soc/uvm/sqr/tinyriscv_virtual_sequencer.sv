@@ -11,8 +11,8 @@ class tinyriscv_virtual_sequencer extends uvm_sequencer;
         if(!uvm_config_db#(tinyriscv_config)::get(this, "", "cfg", cfg)) begin
             `uvm_fatal(`gfn, "cannot get cfg from config db")
         end
-        if(!uvm_config_db#(virtual rib_if)::get(this, "", "ram_if", ram_vif)) begin
-            `uvm_fatal(`gfn, "cannot get ram_if form config db")
+        if(!uvm_config_db#(virtual rib_if)::get(this, "", "ram_vif", ram_vif)) begin
+            `uvm_fatal(`gfn, "cannot get ram_vif form config db")
         end
     endfunction: build_phase
 

@@ -12,11 +12,8 @@ module tinyriscv_top;
 
     always #10 clk = ~clk; // 50MHz
 
+    soc_probe_if probe_if(.*);
     rib_if ram_if(.*);
-
-    wire[`RegBus] x3 = tinyriscv_soc_top_0.u_tinyriscv.u_regs.regs[3];
-    wire[`RegBus] x26 = tinyriscv_soc_top_0.u_tinyriscv.u_regs.regs[26];
-    wire[`RegBus] x27 = tinyriscv_soc_top_0.u_tinyriscv.u_regs.regs[27];
 
     initial begin
         clk = 0;
@@ -28,7 +25,8 @@ module tinyriscv_top;
     end
 
     initial begin
-        uvm_config_db#(virtual rib_if)::set(uvm_root::get(), "uvm_test_top.env", "ram_if", ram_if);
+        uvm_config_db#(virtual rib_if)::set(uvm_root::get(), "uvm_test_top.env", "ram_vif", ram_if);
+        uvm_config_db#(virtual soc_probe_if)::set(uvm_root::get(), "uvm_test_top.env", "probe_vif", probe_if);
         run_test();
     end
 
@@ -42,5 +40,9 @@ module tinyriscv_top;
     assign ram_if.wdata = tinyriscv_soc_top_0.u_ram.data_i;
     assign ram_if.rdata = tinyriscv_soc_top_0.u_ram.data_o;
     assign ram_if.we    = tinyriscv_soc_top_0.u_ram.we_i;
+
+    assign probe_if.x3 = tinyriscv_soc_top_0.u_tinyriscv.u_regs.regs[3];
+    assign probe_if.x26 = tinyriscv_soc_top_0.u_tinyriscv.u_regs.regs[26];
+    assign probe_if.x27 = tinyriscv_soc_top_0.u_tinyriscv.u_regs.regs[27];
 
 endmodule: tinyriscv_top
