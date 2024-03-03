@@ -1,0 +1,235 @@
+- test: origin_rv32ui-p-simple
+  uvm_test: tinyriscv_base_test
+  sim_opts: >
+    +kernel_type=ORIGIN
+    +origin_kernel_name=rv32ui-p-simple
+
+- test: origin_rv32ui-p-add
+  extends: origin_rv32ui-p-simple
+  sim_opts: >
+    +origin_kernel_name=rv32ui-p-add
+
+- test: origin_rv32ui-p-addi
+  extends: origin_rv32ui-p-simple
+  sim_opts: >
+    +origin_kernel_name=rv32ui-p-addi
+
+- test: origin_rv32ui-p-and
+  extends: origin_rv32ui-p-simple
+  sim_opts: >
+    +origin_kernel_name=rv32ui-p-and
+
+- test: origin_rv32ui-p-andi
+  extends: origin_rv32ui-p-simple
+  sim_opts: >
+    +origin_kernel_name=rv32ui-p-andi
+
+- test: origin_rv32ui-p-auipc
+  extends: origin_rv32ui-p-simple
+  sim_opts: >
+    +origin_kernel_name=rv32ui-p-auipc
+
+- test: origin_rv32ui-p-beq
+  extends: origin_rv32ui-p-simple
+  sim_opts: >
+    +origin_kernel_name=rv32ui-p-beq
+
+- test: origin_rv32ui-p-bge
+  extends: origin_rv32ui-p-simple
+  sim_opts: >
+    +origin_kernel_name=rv32ui-p-bge
+
+- test: origin_rv32ui-p-bgeu
+  extends: origin_rv32ui-p-simple
+  sim_opts: >
+    +origin_kernel_name=rv32ui-p-bgeu
+
+- test: origin_rv32ui-p-blt
+  extends: origin_rv32ui-p-simple
+  sim_opts: >
+    +origin_kernel_name=rv32ui-p-blt
+
+- test: origin_rv32ui-p-bltu
+  extends: origin_rv32ui-p-simple
+  sim_opts: >
+    +origin_kernel_name=rv32ui-p-bltu
+
+- test: origin_rv32ui-p-bne
+  extends: origin_rv32ui-p-simple
+  sim_opts: >
+    +origin_kernel_name=rv32ui-p-bne
+
+- test: origin_rv32ui-p-fence_i
+  extends: origin_rv32ui-p-simple
+  sim_opts: >
+    +origin_kernel_name=rv32ui-p-fence_i
+
+- test: origin_rv32ui-p-jal
+  extends: origin_rv32ui-p-simple
+  sim_opts: >
+    +origin_kernel_name=rv32ui-p-jal
+
+- test: origin_rv32ui-p-jalr
+  extends: origin_rv32ui-p-simple
+  sim_opts: >
+    +origin_kernel_name=rv32ui-p-jalr
+
+- test: origin_rv32ui-p-lb
+  extends: origin_rv32ui-p-simple
+  sim_opts: >
+    +origin_kernel_name=rv32ui-p-lb
+
+- test: origin_rv32ui-p-lbu
+  extends: origin_rv32ui-p-simple
+  sim_opts: >
+    +origin_kernel_name=rv32ui-p-lbu
+
+- test: origin_rv32ui-p-lh
+  extends: origin_rv32ui-p-simple
+  sim_opts: >
+    +origin_kernel_name=rv32ui-p-lh
+
+- test: origin_rv32ui-p-lhu
+  extends: origin_rv32ui-p-simple
+  sim_opts: >
+    +origin_kernel_name=rv32ui-p-lhu
+
+- test: origin_rv32ui-p-lui
+  extends: origin_rv32ui-p-simple
+  sim_opts: >
+    +origin_kernel_name=rv32ui-p-lui
+
+- test: origin_rv32ui-p-lw
+  extends: origin_rv32ui-p-simple
+  sim_opts: >
+    +origin_kernel_name=rv32ui-p-lw
+
+- test: origin_rv32ui-p-or
+  extends: origin_rv32ui-p-simple
+  sim_opts: >
+    +origin_kernel_name=rv32ui-p-or
+
+- test: origin_rv32ui-p-ori
+  extends: origin_rv32ui-p-simple
+  sim_opts: >
+    +origin_kernel_name=rv32ui-p-ori
+
+- test: origin_rv32ui-p-sb
+  extends: origin_rv32ui-p-simple
+  sim_opts: >
+    +origin_kernel_name=rv32ui-p-sb
+
+- test: origin_rv32ui-p-sh
+  extends: origin_rv32ui-p-simple
+  sim_opts: >
+    +origin_kernel_name=rv32ui-p-sh
+
+- test: origin_rv32ui-p-sll
+  extends: origin_rv32ui-p-simple
+  sim_opts: >
+    +origin_kernel_name=rv32ui-p-sll
+
+- test: origin_rv32ui-p-slli
+  extends: origin_rv32ui-p-simple
+  sim_opts: >
+    +origin_kernel_name=rv32ui-p-slli
+
+- test: origin_rv32ui-p-slt
+  extends: origin_rv32ui-p-simple
+  sim_opts: >
+    +origin_kernel_name=rv32ui-p-slt
+
+- test: origin_rv32ui-p-slti
+  extends: origin_rv32ui-p-simple
+  sim_opts: >
+    +origin_kernel_name=rv32ui-p-slti
+
+- test: origin_rv32ui-p-sltiu
+  extends: origin_rv32ui-p-simple
+  sim_opts: >
+    +origin_kernel_name=rv32ui-p-sltiu
+
+- test: origin_rv32ui-p-sltu
+  extends: origin_rv32ui-p-simple
+  sim_opts: >
+    +origin_kernel_name=rv32ui-p-sltu
+
+- test: origin_rv32ui-p-sra
+  extends: origin_rv32ui-p-simple
+  sim_opts: >
+    +origin_kernel_name=rv32ui-p-sra
+
+- test: origin_rv32ui-p-srai
+  extends: origin_rv32ui-p-simple
+  sim_opts: >
+    +origin_kernel_name=rv32ui-p-srai
+
+- test: origin_rv32ui-p-srl
+  extends: origin_rv32ui-p-simple
+  sim_opts: >
+    +origin_kernel_name=rv32ui-p-srl
+
+- test: origin_rv32ui-p-srli
+  extends: origin_rv32ui-p-simple
+  sim_opts: >
+    +origin_kernel_name=rv32ui-p-srli
+
+- test: origin_rv32ui-p-sub
+  extends: origin_rv32ui-p-simple
+  sim_opts: >
+    +origin_kernel_name=rv32ui-p-sub
+
+- test: origin_rv32ui-p-sw
+  extends: origin_rv32ui-p-simple
+  sim_opts: >
+    +origin_kernel_name=rv32ui-p-sw
+
+- test: origin_rv32ui-p-xor
+  extends: origin_rv32ui-p-simple
+  sim_opts: >
+    +origin_kernel_name=rv32ui-p-xor
+
+- test: origin_rv32ui-p-xori
+  extends: origin_rv32ui-p-simple
+  sim_opts: >
+    +origin_kernel_name=rv32ui-p-xori
+
+- test: origin_rv32um-p-div
+  extends: origin_rv32ui-p-simple
+  sim_opts: >
+    +origin_kernel_name=rv32um-p-div
+
+- test: origin_rv32um-p-divu
+  extends: origin_rv32ui-p-simple
+  sim_opts: >
+    +origin_kernel_name=rv32um-p-divu
+
+- test: origin_rv32um-p-mul
+  extends: origin_rv32ui-p-simple
+  sim_opts: >
+    +origin_kernel_name=rv32um-p-mul
+
+- test: origin_rv32um-p-mulh
+  extends: origin_rv32ui-p-simple
+  sim_opts: >
+    +origin_kernel_name=rv32um-p-mulh
+
+- test: origin_rv32um-p-mulhsu
+  extends: origin_rv32ui-p-simple
+  sim_opts: >
+    +origin_kernel_name=rv32um-p-mulhsu
+
+- test: origin_rv32um-p-mulhu
+  extends: origin_rv32ui-p-simple
+  sim_opts: >
+    +origin_kernel_name=rv32um-p-mulhu
+
+- test: origin_rv32um-p-rem
+  extends: origin_rv32ui-p-simple
+  sim_opts: >
+    +origin_kernel_name=rv32um-p-rem
+
+- test: origin_rv32um-p-remu
+  extends: origin_rv32ui-p-simple
+  sim_opts: >
+    +origin_kernel_name=rv32um-p-remu

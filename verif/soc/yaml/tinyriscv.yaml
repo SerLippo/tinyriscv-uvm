@@ -4,6 +4,4 @@
     $REPO_BASE/verif/soc/top/tinyriscv_top.sv
   top: tinyriscv_top
 
-- test: origin_rv32ui-p-add
-  uvm_test: tinyriscv_base_test
-  sim_opts: +kernel_type=ORIGIN +origin_kernel_name=rv32ui-p-add
+- import: $REPO_BASE/verif/soc/yaml/tinyriscv_origin_test.yaml

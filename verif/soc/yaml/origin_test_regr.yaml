@@ -1,0 +1,140 @@
+- test: origin_rv32ui-p-simple
+  iterations: 3
+
+- test: origin_rv32ui-p-add
+  iterations: 3
+
+- test: origin_rv32ui-p-addi
+  iterations: 3
+
+- test: origin_rv32ui-p-and
+  iterations: 3
+
+- test: origin_rv32ui-p-andi
+  iterations: 3
+
+- test: origin_rv32ui-p-auipc
+  iterations: 3
+
+- test: origin_rv32ui-p-beq
+  iterations: 3
+
+- test: origin_rv32ui-p-bge
+  iterations: 3
+
+- test: origin_rv32ui-p-bgeu
+  iterations: 3
+
+- test: origin_rv32ui-p-blt
+  iterations: 3
+
+- test: origin_rv32ui-p-bltu
+  iterations: 3
+
+- test: origin_rv32ui-p-bne
+  iterations: 3
+
+- test: origin_rv32ui-p-fence_i
+  iterations: 3
+
+- test: origin_rv32ui-p-jal
+  iterations: 3
+
+- test: origin_rv32ui-p-jalr
+  iterations: 3
+
+- test: origin_rv32ui-p-lb
+  iterations: 3
+
+- test: origin_rv32ui-p-lbu
+  iterations: 3
+
+- test: origin_rv32ui-p-lh
+  iterations: 3
+
+- test: origin_rv32ui-p-lhu
+  iterations: 3
+
+- test: origin_rv32ui-p-lui
+  iterations: 3
+
+- test: origin_rv32ui-p-lw
+  iterations: 3
+
+- test: origin_rv32ui-p-or
+  iterations: 3
+
+- test: origin_rv32ui-p-ori
+  iterations: 3
+
+- test: origin_rv32ui-p-sb
+  iterations: 3
+
+- test: origin_rv32ui-p-sh
+  iterations: 3
+
+- test: origin_rv32ui-p-sll
+  iterations: 3
+
+- test: origin_rv32ui-p-slli
+  iterations: 3
+
+- test: origin_rv32ui-p-slt
+  iterations: 3
+
+- test: origin_rv32ui-p-slti
+  iterations: 3
+
+- test: origin_rv32ui-p-sltiu
+  iterations: 3
+
+- test: origin_rv32ui-p-sltu
+  iterations: 3
+
+- test: origin_rv32ui-p-sra
+  iterations: 3
+
+- test: origin_rv32ui-p-srai
+  iterations: 3
+
+- test: origin_rv32ui-p-srl
+  iterations: 3
+
+- test: origin_rv32ui-p-srli
+  iterations: 3
+
+- test: origin_rv32ui-p-sub
+  iterations: 3
+
+- test: origin_rv32ui-p-sw
+  iterations: 3
+
+- test: origin_rv32ui-p-xor
+  iterations: 3
+
+- test: origin_rv32ui-p-xori
+  iterations: 3
+
+- test: origin_rv32um-p-div
+  iterations: 3
+
+- test: origin_rv32um-p-divu
+  iterations: 3
+
+- test: origin_rv32um-p-mul
+  iterations: 3
+
+- test: origin_rv32um-p-mulh
+  iterations: 3
+
+- test: origin_rv32um-p-mulhsu
+  iterations: 3
+
+- test: origin_rv32um-p-mulhu
+  iterations: 3
+
+- test: origin_rv32um-p-rem
+  iterations: 3
+
+- test: origin_rv32um-p-remu
+  iterations: 3
