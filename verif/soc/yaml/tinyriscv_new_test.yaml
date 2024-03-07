@@ -1,0 +1,4 @@
+- test: base_test
+  uvm_test: tinyriscv_base_test
+  sim_opts: >
+    +kernel_type=NEW

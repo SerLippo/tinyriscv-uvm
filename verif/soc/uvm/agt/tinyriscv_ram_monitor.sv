@@ -65,33 +65,17 @@ class tinyriscv_ram_monitor extends uvm_component;
 
     virtual task monitor_shake_done_signal();
         forever begin
-            wait(ram_vif.addr == cfg.shake_hand_addr);
+            wait(ram_vif.addr == cfg.shake_hand_addr-'h1000_0000);
             @(negedge ram_vif.clk);
             case(ram_vif.wdata)
                 cfg.shake_done_pass_data: begin
                     drop_signal = 1;
-                    `uvm_info(`gfn, "~~~~~~~~~~~~~~~~~~~ TEST_PASS ~~~~~~~~~~~~~~~~~~~", UVM_NONE);
-                    `uvm_info(`gfn, "~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~", UVM_NONE);
-                    `uvm_info(`gfn, "~~~~~~~~~ #####     ##     ####    #### ~~~~~~~~~", UVM_NONE);
-                    `uvm_info(`gfn, "~~~~~~~~~ #    #   #  #   #       #     ~~~~~~~~~", UVM_NONE);
-                    `uvm_info(`gfn, "~~~~~~~~~ #    #  #    #   ####    #### ~~~~~~~~~", UVM_NONE);
-                    `uvm_info(`gfn, "~~~~~~~~~ #####   ######       #       #~~~~~~~~~", UVM_NONE);
-                    `uvm_info(`gfn, "~~~~~~~~~ #       #    #  #    #  #    #~~~~~~~~~", UVM_NONE);
-                    `uvm_info(`gfn, "~~~~~~~~~ #       #    #   ####    #### ~~~~~~~~~", UVM_NONE);
-                    `uvm_info(`gfn, "~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~", UVM_NONE);
+                    print_pass();
                     `uvm_info(`gfn, "Capture program done in signature addr.", UVM_NONE)
                     break;
                 end
                 cfg.shake_done_fail_data: begin
-                    `uvm_info(`gfn, "~~~~~~~~~~~~~~~~~~~ TEST_FAIL ~~~~~~~~~~~~~~~~~~~~", UVM_NONE);
-                    `uvm_info(`gfn, "~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~", UVM_NONE);
-                    `uvm_info(`gfn, "~~~~~~~~~~######    ##       #    #     ~~~~~~~~~~", UVM_NONE);
-                    `uvm_info(`gfn, "~~~~~~~~~~#        #  #      #    #     ~~~~~~~~~~", UVM_NONE);
-                    `uvm_info(`gfn, "~~~~~~~~~~#####   #    #     #    #     ~~~~~~~~~~", UVM_NONE);
-                    `uvm_info(`gfn, "~~~~~~~~~~#       ######     #    #     ~~~~~~~~~~", UVM_NONE);
-                    `uvm_info(`gfn, "~~~~~~~~~~#       #    #     #    #     ~~~~~~~~~~", UVM_NONE);
-                    `uvm_info(`gfn, "~~~~~~~~~~#       #    #     #    ######~~~~~~~~~~", UVM_NONE);
-                    `uvm_info(`gfn, "~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~", UVM_NONE);
+                    print_fail();
                     `uvm_fatal(`gfn, "Capture program fatal in signature addr.")
                 end
             endcase
@@ -102,28 +86,36 @@ class tinyriscv_ram_monitor extends uvm_component;
         wait(probe_vif.x26 == 32'b1)
         #100;
         if (probe_vif.x27 == 32'b1) begin
-            `uvm_info(`gfn, "~~~~~~~~~~~~~~~~~~~ TEST_PASS ~~~~~~~~~~~~~~~~~~~", UVM_NONE);
-            `uvm_info(`gfn, "~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~", UVM_NONE);
-            `uvm_info(`gfn, "~~~~~~~~~ #####     ##     ####    #### ~~~~~~~~~", UVM_NONE);
-            `uvm_info(`gfn, "~~~~~~~~~ #    #   #  #   #       #     ~~~~~~~~~", UVM_NONE);
-            `uvm_info(`gfn, "~~~~~~~~~ #    #  #    #   ####    #### ~~~~~~~~~", UVM_NONE);
-            `uvm_info(`gfn, "~~~~~~~~~ #####   ######       #       #~~~~~~~~~", UVM_NONE);
-            `uvm_info(`gfn, "~~~~~~~~~ #       #    #  #    #  #    #~~~~~~~~~", UVM_NONE);
-            `uvm_info(`gfn, "~~~~~~~~~ #       #    #   ####    #### ~~~~~~~~~", UVM_NONE);
-            `uvm_info(`gfn, "~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~", UVM_NONE);
+            print_pass();
         end else begin
-            `uvm_info(`gfn, "~~~~~~~~~~~~~~~~~~~ TEST_FAIL ~~~~~~~~~~~~~~~~~~~~", UVM_NONE);
-            `uvm_info(`gfn, "~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~", UVM_NONE);
-            `uvm_info(`gfn, "~~~~~~~~~~######    ##       #    #     ~~~~~~~~~~", UVM_NONE);
-            `uvm_info(`gfn, "~~~~~~~~~~#        #  #      #    #     ~~~~~~~~~~", UVM_NONE);
-            `uvm_info(`gfn, "~~~~~~~~~~#####   #    #     #    #     ~~~~~~~~~~", UVM_NONE);
-            `uvm_info(`gfn, "~~~~~~~~~~#       ######     #    #     ~~~~~~~~~~", UVM_NONE);
-            `uvm_info(`gfn, "~~~~~~~~~~#       #    #     #    #     ~~~~~~~~~~", UVM_NONE);
-            `uvm_info(`gfn, "~~~~~~~~~~#       #    #     #    ######~~~~~~~~~~", UVM_NONE);
-            `uvm_info(`gfn, "~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~", UVM_NONE);
+            print_fail();
             `uvm_error(`gfn, $sformatf("fail testnum = %2d", probe_vif.x3));
         end
         drop_signal = 1;
     endtask: origin_waiting_done_signal
+
+    virtual function void print_pass();
+        `uvm_info(`gfn, "~~~~~~~~~~~~~~~~~~~ TEST_PASS ~~~~~~~~~~~~~~~~~~~", UVM_NONE);
+        `uvm_info(`gfn, "~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~", UVM_NONE);
+        `uvm_info(`gfn, "~~~~~~~~~ #####     ##     ####    #### ~~~~~~~~~", UVM_NONE);
+        `uvm_info(`gfn, "~~~~~~~~~ #    #   #  #   #       #     ~~~~~~~~~", UVM_NONE);
+        `uvm_info(`gfn, "~~~~~~~~~ #    #  #    #   ####    #### ~~~~~~~~~", UVM_NONE);
+        `uvm_info(`gfn, "~~~~~~~~~ #####   ######       #       #~~~~~~~~~", UVM_NONE);
+        `uvm_info(`gfn, "~~~~~~~~~ #       #    #  #    #  #    #~~~~~~~~~", UVM_NONE);
+        `uvm_info(`gfn, "~~~~~~~~~ #       #    #   ####    #### ~~~~~~~~~", UVM_NONE);
+        `uvm_info(`gfn, "~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~", UVM_NONE);
+    endfunction: print_pass
+
+    virtual function void print_fail();
+        `uvm_info(`gfn, "~~~~~~~~~~~~~~~~~~~ TEST_FAIL ~~~~~~~~~~~~~~~~~~~~", UVM_NONE);
+        `uvm_info(`gfn, "~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~", UVM_NONE);
+        `uvm_info(`gfn, "~~~~~~~~~~######    ##       #    #     ~~~~~~~~~~", UVM_NONE);
+        `uvm_info(`gfn, "~~~~~~~~~~#        #  #      #    #     ~~~~~~~~~~", UVM_NONE);
+        `uvm_info(`gfn, "~~~~~~~~~~#####   #    #     #    #     ~~~~~~~~~~", UVM_NONE);
+        `uvm_info(`gfn, "~~~~~~~~~~#       ######     #    #     ~~~~~~~~~~", UVM_NONE);
+        `uvm_info(`gfn, "~~~~~~~~~~#       #    #     #    #     ~~~~~~~~~~", UVM_NONE);
+        `uvm_info(`gfn, "~~~~~~~~~~#       #    #     #    ######~~~~~~~~~~", UVM_NONE);
+        `uvm_info(`gfn, "~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~", UVM_NONE);
+    endfunction: print_fail
 
 endclass: tinyriscv_ram_monitor

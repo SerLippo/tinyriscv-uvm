@@ -5,3 +5,4 @@
   top: tinyriscv_top
 
 - import: $REPO_BASE/verif/soc/yaml/tinyriscv_origin_test.yaml
+- import: $REPO_BASE/verif/soc/yaml/tinyriscv_new_test.yaml

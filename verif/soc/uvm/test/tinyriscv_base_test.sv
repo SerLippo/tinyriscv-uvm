@@ -16,19 +16,28 @@ class tinyriscv_base_test extends uvm_test;
     function void end_of_elaboration_phase(uvm_phase phase);
         super.end_of_elaboration_phase(phase);
         uvm_root::get().set_report_max_quit_count(10);
-        uvm_root::get().set_timeout(100ms);
+        uvm_root::get().set_timeout(1ms);
     endfunction: end_of_elaboration_phase
 
     function void start_of_simulation_phase(uvm_phase phase);
+        string cmd;
         if(cfg.kernel_type == ORIGIN) begin
-            string cmd;
             cmd = $sformatf("python3 $REPO_BASE/tools/BinToMem_CLI.py $REPO_BASE/tests/isa/generated/%0s.bin inst.data", cfg.origin_kernel_name);
             if($system(cmd))
                 `uvm_fatal(`gfn, "Generate inst.data failed")
             else
                 `uvm_info(`gfn, "Generate inst.data successed", UVM_LOW)
         end else begin
-            `uvm_fatal(`gfn, "Not support NEW style kernel yet")
+            cmd = $sformatf("python3 $REPO_BASE/verif/soc/asm/asm_gen.py");
+            if($system(cmd))
+                `uvm_fatal(`gfn, "Generate asm failed")
+            else
+                `uvm_info(`gfn, "Generate asm successed", UVM_LOW)
+            cmd = $sformatf("python3 $REPO_BASE/tools/BinToMem_CLI.py asm.bin inst.data");
+            if($system(cmd))
+                `uvm_fatal(`gfn, "Generate inst.data failed")
+            else
+                `uvm_info(`gfn, "Generate inst.data successed", UVM_LOW)
         end
     endfunction: start_of_simulation_phase
 
